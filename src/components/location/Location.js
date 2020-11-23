@@ -1,9 +1,9 @@
 import React from "react"
 import "./Location.css"
 
-export const Location = () => (
+export const Location = ({location}) => (
     <section className="location">
-        <h3 className="location__name">Kennels West Side</h3>
-        <div className="location__address">500 Nowhere Ave</div>
+        <h3 className="location__name">{location.name}</h3>
+        <div className="location__address">{location.address}</div>
     </section>
 )
