@@ -3,6 +3,8 @@ import { LocationProvider } from "./location/LocationProvider";
 import { LocationList } from "./location/LocationList";
 import { AnimalProvider } from "./animal/AnimalProvider";
 import { AnimalList } from "./animal/AnimalList";
+import { CustomerProvider } from "./customer/CustomerProvider";
+import { CustomerList } from "./customer/CustomerList";
 import "./Kennel.css"
 
 export const Kennel = () => (
@@ -19,6 +21,11 @@ export const Kennel = () => (
         <LocationProvider>
             <LocationList />
         </LocationProvider>
+
+        <h2>Customers</h2>
+        <CustomerProvider>
+            <CustomerList />
+        </CustomerProvider>
 
     </>
 )
