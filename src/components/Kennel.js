@@ -1,16 +1,19 @@
+
 import React from "react"
-import { LocationProvider } from "./location/LocationProvider";
-import { LocationList } from "./location/LocationList";
+// import { Route } from "react-router-dom"
+import { NavBar } from "./nav/NavBar"
+import { ApplicationViews } from "./ApplicationViews"
 import "./Kennel.css"
 
 export const Kennel = () => (
     <>
-        <h2>Nashville Kennels</h2>
-        <small>Loving care when you're not there.</small>
-
-        <h2>Locations</h2>
-        <LocationProvider>
-            <LocationList />
-        </LocationProvider>
+        <NavBar />
+        <ApplicationViews />
     </>
-)
+    )
+    
+    
+    
+    
+    
+    
