@@ -10,12 +10,12 @@ export const CustomerContext = React.createContext()
  This component establishes what data can be used.
  */
 export const CustomerProvider = (props) => {
-    const [customers, setLocations] = useState([])
+    const [customers, setCustomers] = useState([])
 
-    const getLocations = () => {
-        return fetch("http://localhost:8088/locations")
+    const getCustomers = () => {
+        return fetch("http://localhost:8088/customers")
             .then(res => res.json())
-            .then(setLocations)
+            .then(setCustomers)
     }
 
     const addCustomer = customer => {
@@ -31,8 +31,8 @@ export const CustomerProvider = (props) => {
 
     /*
         You return a context provider which has the
-        `locations` state, the `addLocation` function,
-        and the `getLocation` function as keys. This
+        `customers` state, the `addCustomer` function,
+        and the `getCustomer` function as keys. This
         allows any child elements to access them.
     */
     return (
