@@ -2,7 +2,7 @@ import React, { useContext, useRef, useEffect } from "react"
 import { EmployeeContext } from "./EmployeeProvider"
 import { LocationContext } from "../location/LocationProvider"
 import { AnimalContext } from "../animal/AnimalProvider"
-import "./Employees.css"
+import "./Employee.css"
 
 export const EmployeeForm = (props) => {
     const { addEmployee } = useContext(EmployeeContext)
@@ -25,7 +25,7 @@ export const EmployeeForm = (props) => {
         Get animal state and location state on initialization.
     */
     useEffect(() => {
-       getAnimals().then(getLocations)
+        getAnimals().then(getLocations)
     }, [])
 
     const constructNewEmployee = () => {
@@ -96,3 +96,4 @@ export const EmployeeForm = (props) => {
         </form>
     )
 }
+
