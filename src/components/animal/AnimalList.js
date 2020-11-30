@@ -5,7 +5,7 @@ import { CustomerContext } from "../customer/CustomerProvider"
 import { Animal } from "./Animal"
 import "./Animal.css"
 
-export const AnimalList = () => {
+export const AnimalList = (props) => {
     const { animals, getAnimals } = useContext(AnimalContext)
     const { locations, getLocations } = useContext(LocationContext)
     const { customers, getCustomers } = useContext(CustomerContext)
@@ -13,15 +13,18 @@ export const AnimalList = () => {
     useEffect(() => {
         console.log("AnimalList: Initial render before data")
         getLocations()
-        .then(getCustomers)
-        .then(getAnimals)
-
-
-
+        getCustomers()
+        getAnimals()
+        
     }, [])
-
-    return (
-        <div className="animals">
+    if ( animals.length && customers.length && locations.length) {
+        console.log(props)
+        return (
+            <div className="animals">
+            <h1>Animals</h1>
+            <button onClick={() => props.history.push("/animals/create")}>
+                Add Appointment
+            </button>
             {
                 animals.map(animal => {
                 const owner = customers.find(cus => cus.id === animal.customerId)
@@ -33,6 +36,6 @@ export const AnimalList = () => {
                             animal={animal} />
             })
             }
-        </div>
-    )
+            </div>
+    )} else { return <div></div> }
 }
