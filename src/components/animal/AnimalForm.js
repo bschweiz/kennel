@@ -19,7 +19,7 @@ export const AnimalForm = (props) => {
     */
     const name = useRef(null)
     const location = useRef(null)
-    const animal = useRef(null)
+    const breedSet = useRef(null)
 
     /*
         Get animal state and location state on initialization.
@@ -36,6 +36,8 @@ export const AnimalForm = (props) => {
             but rather `.current.value` now in React.
         */
         const locationId = parseInt(location.current.value)
+        const breed = breedSet.current.value
+        console.log(breed)
         // const animalId = parseInt(animal.current.value)
 
         if (locationId === 0) {
@@ -44,7 +46,8 @@ export const AnimalForm = (props) => {
             addAnimal({
                 name: name.current.value,
                 locationId,
-                customerId: parseInt(localStorage.getItem("kennel_customer"))
+                customerId: parseInt(localStorage.getItem("kennel_customer")),
+                breed
             })
             .then(() => props.history.push("/animals"))
         }
@@ -57,6 +60,12 @@ export const AnimalForm = (props) => {
                 <div className="form-group">
                     <label htmlFor="animalName">Animal name: </label>
                     <input type="text" id="animalName" ref={name} required autoFocus className="form-control" placeholder="Animal name" />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="animalBreed">Animal breed: </label>
+                    <input type="text" id="animalBreed" ref={breedSet} required autoFocus className="form-control" placeholder="Animal breed" />
                 </div>
             </fieldset>
             <fieldset>
