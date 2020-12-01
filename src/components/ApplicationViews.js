@@ -1,15 +1,15 @@
 
 import React from "react"
 import { Route } from "react-router-dom"
-
 import { AnimalProvider } from "./animal/AnimalProvider"
 import { EmployeeProvider } from "./employee/EmployeeProvider";
 import { LocationProvider } from "./location/LocationProvider";
 import { CustomerProvider } from "./customer/CustomerProvider";
 import { LocationList } from "./location/LocationList"
 import { AnimalList } from "./animal/AnimalList"
-import { EmployeeList } from "./employee/EmployeeList";
 import { CustomerList } from "./customer/CustomerList";
+import { EmployeeList } from "./employee/EmployeeList";
+import { EmployeeDetail } from "./employee/EmployeeDetail";
 import { EmployeeForm } from "./employee/EmployeeForm";
 import { AnimalForm } from "./animal/AnimalForm"
 
@@ -38,17 +38,21 @@ export const ApplicationViews = (props) => {
             </AnimalProvider>
 
             <EmployeeProvider>
-            <AnimalProvider>
                 <LocationProvider>
-                    <Route exact path="/employees" render={
-                        props => <EmployeeList {...props} />
-                    } />
+                    <AnimalProvider>
+                        <Route path="/employees" render={
+                            props => <EmployeeList {...props} />
+                        } />
+                        <Route path="/employees/create" render={
+                            props => <EmployeeForm {...props} />
+                        } />
 
-                    <Route exact path="/employees/create" render={
-                        props => <EmployeeForm {...props} />
-                    } />
+                        {/* New route for showing employee details */}
+                        <Route path="/employees/:employeeId(\d+)" render={
+                            props => <EmployeeDetail {...props} />
+                        } />
+                    </AnimalProvider>
                 </LocationProvider>
-            </AnimalProvider>
             </EmployeeProvider>
 
             <CustomerProvider>
