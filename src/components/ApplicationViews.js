@@ -40,6 +40,10 @@ export const ApplicationViews = (props) => {
             <EmployeeProvider>
                 <LocationProvider>
                     <AnimalProvider>
+                        {/* New route for showing employee details */}
+                        <Route path="/employees/:employeeId(\d+)" render={
+                            props => <EmployeeDetail {...props} />
+                        } />
                         <Route path="/employees" render={
                             props => <EmployeeList {...props} />
                         } />
@@ -47,10 +51,6 @@ export const ApplicationViews = (props) => {
                             props => <EmployeeForm {...props} />
                         } />
 
-                        {/* New route for showing employee details */}
-                        <Route path="/employees/:employeeId(\d+)" render={
-                            props => <EmployeeDetail {...props} />
-                        } />
                     </AnimalProvider>
                 </LocationProvider>
             </EmployeeProvider>
