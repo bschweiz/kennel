@@ -19,7 +19,7 @@ export const AnimalDetail = (props) => {
             <div className="animal__breed">{animal.breed}</div>
             <div className="animal__location">Location: {animal.location.name}</div>
             <div className="animal__owner">Customer: {animal.customer.name}</div>
-            <button onClick={
+            {/* <button onClick={
                 () => {
                     releaseAnimal(animal)
                         .then(() => {
@@ -31,7 +31,7 @@ export const AnimalDetail = (props) => {
             </button>
             <button onClick={() => {
                 props.history.push(`/animals/edit/${animal.id}`)
-            }}>Edit</button>
+            }}>Edit</button> */}
         </section>
     )
 }
