@@ -4,13 +4,23 @@ import Animal from "./Animal"
 import "./Animal.css"
 
 export const AnimalList = ({ history }) => {
-    const { getAnimals, animals } = useContext(AnimalContext)
-
+    const { getAnimals, searchTerms, animals } = useContext(AnimalContext)
+    const [ filteredAnimals, setFiltered] = useState([])
     // Initialization effect hook -> Go get animal data
     useEffect(()=>{
         getAnimals()
     }, [])
 
+    useEffect (() => {
+        if (searchTerms !== "") {
+            // if searchTerms ie the search bar is NOT empty then pass the matching subset of animals based on 
+            // the .filter to the setFiltered function. if there are no matches to the text, display all animals
+            const subset = animals.filter(a => a.name.toLowerCase().includes(searchTerms))
+        setFiltered(subset)
+        } else { setFiltered(animals)}
+    // this hook watches for state changes in searchTerms (& animals?)
+    }, [searchTerms, animals])
+    
     return (
         <>
             <h1>Animals</h1>
@@ -20,7 +30,7 @@ export const AnimalList = ({ history }) => {
             </button>
             <div className="animals">
                 {
-                    animals.map(animal => {
+                    filteredAnimals.map(animal => {
                         return <Animal key={animal.id} animal={animal} />
                     })
                 }

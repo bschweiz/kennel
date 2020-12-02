@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
 /*
     The context is imported and used by individual components
@@ -9,6 +9,7 @@ export const AnimalContext = React.createContext()
 
 export const AnimalProvider = (props) => {
     const [animals, setAnimals] = useState([])
+    const [ searchTerms, setTerms ] = useState("")
 
     const getAnimals = () => {
         return fetch("http://localhost:8088/Animals")
@@ -40,7 +41,7 @@ export const AnimalProvider = (props) => {
     */
     return (
         <AnimalContext.Provider value={{
-            animals, addAnimal, getAnimals, getAnimalById
+            animals, addAnimal, getAnimals, getAnimalById, searchTerms, setTerms
         }}>
             {props.children}
         </AnimalContext.Provider>
